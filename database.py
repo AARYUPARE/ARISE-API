@@ -1,9 +1,9 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "mysql+pymysql://root:Avsm%40123@localhost/memoryAnchor"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
-
 Base = declarative_base()

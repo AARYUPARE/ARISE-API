@@ -6,8 +6,14 @@ from schemas import RoomCreate, RoomResponse
 from typing import List
 from fastapi import HTTPException
 from schemas import RoomFullDTO, RoomAnchorUpdate,ObjectCreate
+from database import engine
+from models import Base
+from datetime import datetime
 
 app = FastAPI(title="Memory Anchor API")
+
+Base.metadata.create_all(bind=engine)
+
 
 # DB Dependency
 def get_db():
